@@ -21,10 +21,8 @@ public class CursoController {
     private final CursoService cursoService;
 
     @GetMapping("/{id}/curso")
-    public Mono<ResponseEntity<CursoDto>> getCursoById(@PathVariable int id){
-        return cursoService.getById(id)
-                .map(curso -> new ResponseEntity<>(curso, HttpStatus.OK))
-                .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    public Mono<CursoDto> getCursoById(@PathVariable int id){
+        return cursoService.getById(id);
     }
     @GetMapping("/{id}/porcent")
     public Mono<AprobaPorcentResponseDto> getAprobaPorcent(@PathVariable int id){
